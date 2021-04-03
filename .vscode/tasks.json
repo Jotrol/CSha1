@@ -1,0 +1,41 @@
+{
+    "tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: gcc.exe сборка активного файла",
+            "command": "C:\\TDM-GCC\\bin\\gcc.exe",
+            "args": [
+                "-g", "dev.c",
+                "-o", "bin\\dev",
+                "-L./bin", "-llibCSha1"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "Отладка по dev.c"
+        },
+        {
+            "type": "shell",
+            "label": "Собрать библиотеку",
+            "command": "C:\\TDM-GCC\\bin\\gcc.exe",
+            "args": [
+                "-c", ".\\sha1.c",
+                "&&", 
+                "C:\\TDM-GCC\\bin\\gcc.exe", "-shared", ".\\sha1.o", "-o", "..\\bin\\libCSha1.dll",
+                "&&",
+                "del", ".\\*.o"
+            ],
+            "options": { "cwd": "${workspaceFolder}\\src" },
+            "problemMatcher": [ "$gcc" ],
+            "group": "build"
+        }
+    ],
+    "version": "2.0.0"
+}
